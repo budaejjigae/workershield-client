@@ -145,7 +145,7 @@ window.addEventListener("scroll", adjustBoardContainerHeight);
 
 
 
-const container = document.getElementById("board-container");
+const container = document.getElementById("posts-container");
 const searchInput = document.getElementById("search");
 const searchButton = document.getElementById("search-button");
 
@@ -183,19 +183,19 @@ function performSearch() {
 function renderSearchResults(searchResults) {
     // 기존에 표시되어있는 검색 결과를 모두 지웁니다.
     container.innerHTML = "";
-
-    searchResults.forEach((result) => {
+    searchResults.data.forEach((result) => {
+        console.log(result)
         const row = document.createElement("div");
         row.innerHTML = `
-        <a class="post" href="./post.html?id=${result.id}">
-            <div class="author">${result.author}</div>
-            <div class="title">${result.title}</div>
-            <div class="content">${result.content}</div>
+        <a class="post" href="./post.html?id=${result.boardID}">
+            <div class="author">${result.boardWriter}</div>
+            <div class="title">${result.boardHead}</div>
+            <div class="content">${result.boardContent}</div>
             <div class="bottom-menu">
                 <box-icon name='show'></box-icon>
-                <div class="views">${result.views}</div>
+                <div class="views">${result.boardView}</div>
                 <box-icon name='comment' size="20px"></box-icon>
-                <div class="comments">${result.comments}</div>
+                <div class="comments">${result.boardComment}</div>
             </div>
         </a>
         `;
