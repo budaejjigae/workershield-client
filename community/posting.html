@@ -13,14 +13,16 @@
         <a onclick="window.history.back()"><box-icon name='chevron-left' color="var(--main)" size="30px"></box-icon></a>
         <div class="title">글 작성</div>
     </header>
-    <form>
+    <form id="upload-form">
         <label for="title">제목</label>
         <input type="text" id="title" name="title" maxlength="20" placeholder="제목은 입력해주세요. (20자 이내)" required>
   
         <label for="content">내용</label>
         <textarea id="content" name="content" maxlength="1000" placeholder="내용을 입력해주세요. (1000자 이내)" required></textarea>
   
-        <button type="button" onclick="uploadPost()">업로드</button>
+        <button type="submit" id="upload-btn">업로드</button>
     </form>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./posting.js"></script>
 </body>
 </html>

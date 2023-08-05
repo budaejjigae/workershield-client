@@ -1,15 +1,28 @@
-const loginForm = document.getElementById("login-form");
+document.getElementById('login-form').addEventListener('submit', function (event) {
+  event.preventDefault();
 
-loginForm.addEventListener("submit", (e) => {
-  e.preventDefault(); // 폼 제출 동작 중지
+  const userID = document.getElementById('username').value;
+  const userPW = document.getElementById('password').value;
 
-  // 아이디와 비밀번호 입력값 가져오기
-  const username = document.getElementById("username").value;
-  const password = document.getElementById("password").value;
+  const data = { userID, userPW };
 
-  // 간단한 예시: 입력된 아이디와 비밀번호를 콘솔에 출력합니다.
-  console.log("아이디:", username);
-  console.log("비밀번호:", password);
-
-  // 여기에서 실제 로그인 처리를 수행하거나 서버로 전송하는 작업을 구현할 수 있습니다.
+  // 로그인 정보를 서버로 POST 요청으로 전송 (Axios 사용)
+  axios.post('http://192.168.10.192:8088/auth/log', data)
+    .then((response) => {
+      if (response.data.statusMsg) {
+        // 로그인 성공 메시지 표시
+        console.log('성공');
+        const accessToken = response.data.data; // 토큰 추출
+        // 토큰을 원하는 방식으로 저장 (예: 로컬 스토리지에 저장)
+        localStorage.setItem('accessToken', accessToken);
+        console.log(accessToken)
+        window.location.href = '/';
+      } else {
+        // 로그인 실패 메시지 표시
+        console.log('실패');
+      }
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
 });
