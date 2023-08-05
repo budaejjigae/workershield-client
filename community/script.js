@@ -108,9 +108,8 @@ function updatePaginationButtons(currentPage, totalPages) {
 
 // 페이지 수 계산
 async function calculateTotalPages(pageId) {
-    const totalPosts = await fetchPosts(pageId); // 전체 게시글 목록 가져오기
-    return Math.ceil(totalPosts.length / postsPerPage);
-  }  
+    return Math.ceil(3 / 2);
+}  
 
 async function initializePage() {
     const currentPage = 1;
@@ -134,7 +133,7 @@ function adjustBoardContainerHeight() {
         boardContainer.style.height = "auto"; // 스크롤이 있으면 height를 자동으로 설정
     } else {
         boardContainer.style.height = "645px"; // 스크롤이 없으면 height를 600px로 설정
-        boardContainer.style.overflowY = "hidden"; // 스크롤이 없는 경우 overflowY를 hidden으로 설정하여 스크롤바 숨김
+        boardContainer.style.overflowY = "auto"; // 스크롤이 없는 경우 overflowY를 hidden으로 설정하여 스크롤바 숨김
     }
 }
 

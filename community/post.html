@@ -24,16 +24,11 @@
         </div>
         <div class="comment-container">
             <div class="text">댓글</div>
-            <div class="comment">
-                <div class="author">작성자</div>
-                <div class="content">댓글이지롱~~~~~~~~</div>
-                <div class="date">2023.08.05</div>
-            </div>
         </div>
-        <div class="comment-input">
+        <form id="comment-form" class="comment-input">
             <input type="text" placeholder="댓글을 입력하세요.">
-            <button><box-icon name='send' type='solid' color="white"></box-icon></button>
-          </div>
+            <button id="submit-comment"><box-icon name='send' type='solid' color="white"></box-icon></button>
+        </form>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="./post.js"></script>
