@@ -15,6 +15,10 @@
     border: 1px solid var(--gray500);
 }
 
+input:focus {
+    outline: 1px solid var(--main);
+}
+
 .search-icon {
     margin-top: 12px;
     margin-left: -48px;

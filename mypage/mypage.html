@@ -10,6 +10,18 @@
     <title>마이페이지</title>
 </head>
 <body>
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <box-icon name='x' id="close-btn" size="30px"></box-icon>
+            <form>
+                <input type="number" placeholder="초대코드 재입력">
+                <div class="btn-container">
+                    <button class="cancel-btn">취소</button>
+                    <button class="complete-btn">완료</button>
+                </div>
+            </form>
+        </div>
+      </div>
     <div class="container">
         <div class="profile-container">
             <img class="profile-img" src="../assets/profile.png"/>
@@ -17,7 +29,7 @@
                 <div class="name">
                     사용자명
                 </div>
-                <div class="info">내 정보<box-icon name='chevron-right'  color="var(--gray500)"></box-icon></div>
+                <div class="info" id="info-btn">초대코드 재입력<box-icon name='edit-alt' type="solid"  color="var(--gray500)"></box-icon></div>
             </div>
         </div>
         <div class="menu-container">
@@ -50,5 +62,6 @@
         <a class="nav-item" href="../community/community.html"><box-icon name='chat' ></box-icon><span>커뮤니티</span></a>
         <a class="nav-item active" href="../mypage/mypage.html"><box-icon name='user' color="var(--main)"></box-icon><span>마이페이지</span></a>
     </footer>
+    <script src="./mypage.js"></script>
 </body>
 </html>
