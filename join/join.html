@@ -3,29 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <link rel="stylesheet" href="../css/default.css">
     <link rel="stylesheet" href="../css/bottomNavigation.css">
     <link rel="stylesheet" href="./join.css">
-    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
-    <title>회원가입</title>
 </head>
 <body>
     
     <header>
-        <box-icon name='chevron-left' size="24px"></box-icon>
+        <box-icon name='chevron-left' size="24px" id="prev-button"></box-icon>
         <div class="header-title">회원가입</div>
     </header>
 
     <form action="">
-        
+        <div class="input-container">
+            <div class="label">
+                이름
+            </div>
+            <input type="text" name="name" id="name-input" placeholder="이름"/>
+        </div>
+        <div class="input-container">
+            <div class="label">
+                아이디
+            </div>
+            <input type="text" name="id" id="id-input" placeholder="아이디"/>
+        </div>
+        <div class="input-container">
+            <div class="label">
+                비밀번호
+            </div>
+            <input type="password" name="pw" id="pw-input" placeholder="비밀번호"/>
+        </div>
+        <div class="input-container">
+            <div class="label">
+                비밀번호 확인
+            </div>
+            <input type="password" id="pw-check-input" placeholder="비밀번호"/>
+        </div>
+        <div class="input-container">
+            <div class="label">
+                초대코드
+            </div>
+            <input type="text" name="invite" id="invite-input" placeholder="초대코드"/>
+        </div>
+
+        <button>
+            <span>회원가입</span>
+        </button>
     </form>
 
-    <footer class="bottom-navigation">
-        <a class="nav-item" href="../index.html"><box-icon name='home-alt-2'></box-icon><span>홈</span></a>
-        <a class="nav-item active" href="../info/info.html"><box-icon name='info-circle' color="var(--main)"></box-icon><span>정보</span></a>
-        <a class="nav-item" href="../calendar/calendar.html"><box-icon name='calendar' ></box-icon><span>일정</span></a>
-        <a class="nav-item" href="../community/community.html"><box-icon name='chat' ></box-icon><span>커뮤니티</span></a>
-        <a class="nav-item" href="../mypage/mypage.html"><box-icon name='user' ></box-icon><span>마이페이지</span></a>
-    </footer>
+    <script src="./join.js"></script>
 </body>
 </html>
