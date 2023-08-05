@@ -61,6 +61,28 @@ main {
     flex-direction: column;
 }
 
+.search-container {
+    display: flex;
+}
+
+.search {
+    width: calc(100% - 16px);
+    height: 48px;
+    padding: 0 16px;
+    border-radius: 30px;
+    margin: 0 0 28px 0;
+    border: 1px solid var(--gray500);
+}
+
+input:focus {
+    outline: 1px solid var(--main);
+}
+
+.search-icon {
+    margin-top: 12px;
+    margin-left: -48px;
+}
+
 .recent-label {
     color: var(--gray900);
     font-size: 14px;
@@ -72,6 +94,12 @@ main {
     flex-direction: column;
     width: 100%;
     row-gap: 14px;
+}
+
+.post {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
 }
 
 .posts .post-container {

@@ -19,7 +19,7 @@ joinForm.addEventListener('submit', e => {
     const userID = userIDInput.value;
     const userPW = userPWInput.value;
     const userPwCheck = userPwCheckInput.value;
-    const inviteCode = inviteCodeInput.value;s
+    const inviteCode = inviteCodeInput.value;
 
     const data = {userID, userName, userPW, inviteCode};
 
