@@ -15,43 +15,48 @@
         <div class="header-title">회원가입</div>
     </header>
 
-    <form action="">
+    <form action="" id="join-form">
         <div class="input-container">
             <div class="label">
                 이름
             </div>
             <input type="text" name="name" id="name-input" placeholder="이름"/>
+            <span class="error-msg">이름을 입력해주세요</span>
         </div>
         <div class="input-container">
             <div class="label">
                 아이디
             </div>
             <input type="text" name="id" id="id-input" placeholder="아이디"/>
+            <span class="error-msg">아이디를 입력해주세요</span>
         </div>
         <div class="input-container">
             <div class="label">
                 비밀번호
             </div>
             <input type="password" name="pw" id="pw-input" placeholder="비밀번호"/>
+            <span class="error-msg">비밀번호를 입력해주세요</span>
         </div>
         <div class="input-container">
             <div class="label">
                 비밀번호 확인
             </div>
-            <input type="password" id="pw-check-input" placeholder="비밀번호"/>
+            <input type="password" id="pw-check-input" placeholder="비밀번호 확인"/>
+            <span class="error-msg">비밀번호가 일치하지 않습니다</span>
         </div>
         <div class="input-container">
             <div class="label">
                 초대코드
             </div>
             <input type="text" name="invite" id="invite-input" placeholder="초대코드"/>
+            <span class="error-msg">초대코드가 유효하지 않습니다.</span>
         </div>
 
-        <button>
+        <button type="submit">
             <span>회원가입</span>
         </button>
     </form>
-
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="./join.js"></script>
 </body>
 </html>

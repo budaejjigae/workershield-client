@@ -1,14 +1,14 @@
 .head-container {
     width: 100%;
-    height: 330px;
-    background-color: var(--main);
+    height: 270px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: var(--main);
 }
 
 .infos {
-    margin: 100px 0 0 0;
+    margin: 70px 0 0 0;
     width: calc(100% - 32px);
     display: flex;
 }
@@ -16,9 +16,10 @@
 .info-container {
     position: relative;
     width: 100%;
-    height: 140px;
+    height: 130px;
     background-color: white;
     border-radius: 5px;
+    background-size: cover; 
 }
 
 .invisible {
@@ -29,6 +30,9 @@
     position: absolute;
     top: 16px;
     left: 16px;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--main);
 }
 
 .info-container .info-date-container {
@@ -41,7 +45,7 @@
 }
 
 .info-date-label, .info-date {
-    color: var(--gray500);
+    color: var(--gray900);
     font-size: 12px;
 }
 

@@ -1,7 +1,15 @@
 const headContainer = document.getElementsByClassName("info-container");
 
 headContainer[0].addEventListener("click", ()=>{
-    
+    radio2.click();
+});
+
+headContainer[1].addEventListener("click", ()=>{
+    radio3.click();
+});
+
+headContainer[2].addEventListener("click", ()=>{
+    radio1.click();
 });
 
 // 라디오 버튼 요소들 가져오기
@@ -33,7 +41,6 @@ radio3.addEventListener("change", handleRadioChange);
 
 let radioIndex = 1;
 setInterval(()=>{
-    console.log('change');
     if(radioIndex === 0){
         radio1.click();
         radioIndex++;
