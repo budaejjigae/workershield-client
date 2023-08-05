@@ -10,7 +10,39 @@
     <title>마이페이지</title>
 </head>
 <body>
-    
+    <div class="container">
+        <div class="profile-container">
+            <img class="profile-img" src="../assets/profile.png"/>
+            <div class="info-container">
+                <div class="name">
+                    사용자명
+                </div>
+                <div class="info">내 정보<box-icon name='chevron-right'  color="var(--gray500)"></box-icon></div>
+            </div>
+        </div>
+        <div class="menu-container">
+            <div class="menu">
+                <div class="my-tab">
+                    <div class="my"><box-icon name='edit' type='solid'  color="var(--main)" size="45px"></box-icon></div>
+                    <div class="text">나의 글</div>
+                </div>
+                <div class="my-tab">
+                    <div class="my"><box-icon name='message-rounded-dots' type='solid'  color="var(--main)" size="45px"></box-icon></div>
+                    <div class="text">나의 댓글</div>
+                </div>
+            </div>
+            <div class="menu">
+                <div class="my-tab">
+                    <div class="my"><box-icon name='bell' type='solid'  color="var(--main)" size="45px"></box-icon></div>
+                    <div class="text">알림</div>
+                </div>
+                <div class="my-tab">
+                    <div class="my"><box-icon name='cog' type='solid' color="var(--main)" size="45px"></box-icon></div>
+                    <div class="text">설정</div>
+                </div>
+            </div>
+        </div>
+    </div>
     <footer class="bottom-navigation">
         <a class="nav-item" href="../index.html"><box-icon name='home-alt-2'></box-icon><span>홈</span></a>
         <a class="nav-item" href="../info/info.html"><box-icon name='info-circle' ></box-icon><span>정보</span></a>

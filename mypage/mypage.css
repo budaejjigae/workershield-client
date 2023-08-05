@@ -1,0 +1,58 @@
+.profile-container {
+    display: flex;
+    align-items: center;
+    height: 180px;
+    padding: 16px;
+    border: 20px solid var(--main);
+}
+
+.info-container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+    margin-left: 16px;
+}
+
+.name {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.info {
+    display: flex;
+    align-items: center;
+    color: var(--gray500);
+}
+
+.menu-container {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 30px;
+}
+
+.menu {
+    display: flex;
+    justify-content: space-between;
+    column-gap: 50px;
+}
+
+.my-tab {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 8px;
+}
+
+.my {
+    width: 120px;
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid var(--main);
+    border-radius: 8px;
+}
