@@ -108,9 +108,8 @@ function updatePaginationButtons(currentPage, totalPages) {
 
 // 페이지 수 계산
 async function calculateTotalPages(pageId) {
-    const totalPosts = await fetchPosts(pageId); // 전체 게시글 목록 가져오기
-    return Math.ceil(totalPosts.length / postsPerPage);
-  }  
+    return Math.ceil(3 / 2);
+}  
 
 async function initializePage() {
     const currentPage = 1;
@@ -134,7 +133,7 @@ function adjustBoardContainerHeight() {
         boardContainer.style.height = "auto"; // 스크롤이 있으면 height를 자동으로 설정
     } else {
         boardContainer.style.height = "645px"; // 스크롤이 없으면 height를 600px로 설정
-        boardContainer.style.overflowY = "hidden"; // 스크롤이 없는 경우 overflowY를 hidden으로 설정하여 스크롤바 숨김
+        boardContainer.style.overflowY = "auto"; // 스크롤이 없는 경우 overflowY를 hidden으로 설정하여 스크롤바 숨김
     }
 }
 
@@ -143,3 +142,85 @@ adjustBoardContainerHeight();
 
 // 스크롤 이벤트를 감지하여 스크롤이 발생할 때마다 height 조절
 window.addEventListener("scroll", adjustBoardContainerHeight);
+
+
+
+const container = document.getElementById("board-container");
+const searchInput = document.getElementById("search");
+const searchButton = document.getElementById("search-button");
+
+// 검색 버튼을 클릭하거나 검색어 입력창에서 엔터를 누를 때 검색을 수행합니다.
+searchButton.addEventListener("click", performSearch);
+searchInput.addEventListener("keyup", function (event) {
+    if (event.key === "Enter") {
+        performSearch();
+    }
+});
+
+// 검색 기능을 수행하는 함수입니다.
+function performSearch() {
+    const searchKeyword = searchInput.value.trim().toLowerCase();
+
+    if (searchKeyword === "") {
+        // 검색어가 없는 경우 모든 게시글을 다시 표시합니다.
+        renderPosts(posts);
+        return;
+    }
+
+    // 검색 결과를 백엔드에 요청하고 받아온 데이터를 사용합니다.
+    // 백엔드에서는 검색어와 관련된 데이터를 전달합니다.
+    axios.get(`http://192.168.10.192:8088/commu/search/?searchWord=${searchKeyword}`, { headers })
+        .then((response) => {
+            const searchResults = response.data;
+            renderSearchResults(searchResults);
+        })
+        .catch((error) => {
+            console.error("Error fetching search results:", error);
+        });
+}
+
+// 검색 결과를 화면에 표시하는 함수입니다.
+function renderSearchResults(searchResults) {
+    // 기존에 표시되어있는 검색 결과를 모두 지웁니다.
+    container.innerHTML = "";
+
+    searchResults.forEach((result) => {
+        const row = document.createElement("div");
+        row.innerHTML = `
+        <a class="post" href="./post.html?id=${result.id}">
+            <div class="author">${result.author}</div>
+            <div class="title">${result.title}</div>
+            <div class="content">${result.content}</div>
+            <div class="bottom-menu">
+                <box-icon name='show'></box-icon>
+                <div class="views">${result.views}</div>
+                <box-icon name='comment' size="20px"></box-icon>
+                <div class="comments">${result.comments}</div>
+            </div>
+        </a>
+        `;
+        container.appendChild(row);
+    });
+}
+
+function renderPosts(postsToRender) {
+    container.innerHTML = "";
+
+    postsToRender.forEach((post) => {
+        const row = document.createElement("div");
+        row.innerHTML = `
+        <a class="post" href="./post.html?id=${result.id}">
+            <div class="author">${result.author}</div>
+            <div class="title">${result.title}</div>
+            <div class="content">${result.content}</div>
+            <div class="bottom-menu">
+                <box-icon name='show'></box-icon>
+                <div class="views">${result.views}</div>
+                <box-icon name='comment' size="20px"></box-icon>
+                <div class="comments">${result.comments}</div>
+            </div>
+        </a>
+        `;
+        container.appendChild(row);
+    });
+}
