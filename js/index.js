@@ -54,3 +54,76 @@ setInterval(()=>{
         radioIndex = 0;
     }
 }, 3000);
+
+// 토큰을 로컬 스토리지에서 가져오기
+const accessToken = localStorage.getItem('accessToken');
+
+// API 요청 헤더에 토큰 추가
+const headers = {
+    Authorization: `Bearer ${accessToken}`
+};
+
+// 게시글 목록을 가져오는 함수
+async function fetchPosts() {
+    try {
+        const response = await axios.get(`http://192.168.10.192:8088/commu/page/1`, { headers });
+        const { data, totalPosts } = response.data; // 응답 데이터에서 필요한 정보 추출
+        console.log('d: ', data);
+        console.log('t:', totalPosts)
+    
+        // 필요한 정보를 가공하여 배열 형태로 반환
+        const posts = data.map(item => ({
+            author: item.boardWriter,
+            title: item.boardHead,
+            content: item.boardContent,
+            views: item.boardView,
+            comments: item.boardComment,
+        }));
+    
+        return { posts, totalPosts }; // 가져온 게시글 목록과 총 게시글 수 반환
+        } catch (error) {
+        console.error('Error fetching posts:', error);
+        return { posts: [], totalPosts: 0 }; // 에러가 발생하면 빈 배열과 0을 반환
+        }
+    } 
+
+    async function displayPosts(pageNumber) {
+        // 게시글 목록 가져오기
+        const { posts } = await fetchPosts(pageNumber); // fetchPosts 함수 수정 후 반환값 변경
+    
+        const container = document.getElementsByClassName("post-container");
+        container.innerHTML = ""; // 기존 게시물 삭제
+
+        let i = 0; 
+        posts.forEach((post) => {
+            const postHTML = `
+                <a class="post" href="./post.html">
+                    <div class="post-title">
+                        ${post.title}
+                    </div>
+                    <div class="icons">
+                        <div class="view-container">
+                            <box-icon type='solid' name='show' color="#6a6a6a" size="18px"></box-icon>
+                            <div class="view-data">
+                                ${post.view}
+                            </div>
+                        </div>
+                        <div class="comment-container">
+                            <box-icon type='solid' name='comment' color="#6a6a6a" size="14px"></box-icon>
+                            <div class="comment-data">
+                                ${post.comments}
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            `;
+            
+            container.innerHTML += postHTML;    
+
+            if(i++ === container.length) return;
+        });
+}
+
+displayPosts(1);
+
+
