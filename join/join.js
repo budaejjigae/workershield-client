@@ -21,6 +21,32 @@ joinForm.addEventListener('submit', e => {
     const userPwCheck = userPwCheckInput.value;
     const inviteCode = inviteCodeInput.value;
 
+    if(userName.length === 0){
+        errorMessages[0].style.visibility = "visible";
+        return;
+    }
+
+    if(userID.length === 0){
+        errorMessages[1].style.visibility = "visible";
+        return;
+    }
+
+    if(userPW.length === 0){
+        errorMessages[2].style.visibility = "visible";
+        return;
+    }
+
+    if(userPW !== userPwCheck) {
+        errorMessages[3].style.visibility = "visible";
+        return;
+    }
+
+    if(inviteCode.length > 6) {
+        errorMessages[4].style.visibility = "visible";
+        return;
+    }
+
+
     const data = {userID, userName, userPW, inviteCode};
 
     axios.post('http://192.168.10.192:8088/auth/user', data)
