@@ -10,7 +10,46 @@
     <title>일정</title>
 </head>
 <body>
-    
+    <div class="container">
+        <div class="month">
+        <span class="arrow" onclick="prevMonth()"><box-icon name='chevron-left'></box-icon></span>
+        <span id="month"></span>
+        <span class="arrow" onclick="nextMonth()"><box-icon name='chevron-right' ></box-icon></span>
+        </div>
+        <div class="calendar-container">
+            <div class="week-container">
+                <div>일</div>
+                <div>월</div>
+                <div>화</div>
+                <div>수</div>
+                <div>목</div>
+                <div>금</div>
+                <div>토</div>
+            </div>
+            <table id="calendar">
+            </table>
+        </div>
+        <div id="event-container">
+            <div class="event">
+                <div class="color"></div>
+                <div class="content">
+                    <div class="date">08.10</div>
+                    <div class="title">
+                        안전모 점검일
+                    </div>
+                </div>
+            </div>
+            <div class="event">
+                <div class="color"></div>
+                <div class="content">
+                    <div class="date">08.25</div>
+                    <div class="title">
+                        사내 안전 교육
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <footer class="bottom-navigation">
         <a class="nav-item" href="../index.html"><box-icon name='home-alt-2'></box-icon><span>홈</span></a>
         <a class="nav-item" href="../info/info.html"><box-icon name='info-circle' ></box-icon><span>정보</span></a>
@@ -18,5 +57,6 @@
         <a class="nav-item" href="../community/community.html"><box-icon name='chat' ></box-icon><span>커뮤니티</span></a>
         <a class="nav-item" href="../mypage/mypage.html"><box-icon name='user' ></box-icon><span>마이페이지</span></a>
     </footer>
+    <script src="./calendar.js"></script>
 </body>
 </html>
