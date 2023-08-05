@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <link rel="stylesheet" href="../css/default.css">
+    <link rel="stylesheet" href="../css/bottomNavigation.css">
+    <link rel="stylesheet" href="./style.css">
+    <title>커뮤니티</title>
+</head>
+<body>
+    <div class="container">
+        <div class="search-container">
+            <input class="search" type="text" placeholder="검색어를 입력해주세요."/>
+            <box-icon name='search' color="var(--main)" class="search-icon"></box-icon>
+        </div>
+        <div class="board-container" id="posts-container">
+            <!-- 게시글 추가 -->
+        </div>
+        <div class="pagination" id="pagination">
+            <!-- 페이징 버튼 추가 -->
+        </div>
+        <div class="post-btn">
+            <a href="./posting.html"><box-icon name='pencil' color="white"></box-icon></a>
+        </div>
+    </div>
+    <footer class="bottom-navigation">
+        <a class="nav-item active" href="../"><box-icon name='home-alt-2'></box-icon><span>홈</span></a>
+        <a class="nav-item" href="../info"><box-icon name='info-circle' ></box-icon><span>정보</span></a>
+        <a class="nav-item" href="../calendar"><box-icon name='calendar'></box-icon><span>일정</span></a>
+        <a class="nav-item active" href="../community"><box-icon name='chat' color="var(--main)"></box-icon><span>커뮤니티</span></a>
+        <a class="nav-item" href="../mypage"><box-icon name='user' ></box-icon><span>마이페이지</span></a>
+    </footer>
+    <script src="./script.js"></script>
+</body>
+</html>

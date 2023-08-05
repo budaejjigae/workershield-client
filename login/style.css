@@ -27,6 +27,10 @@ input {
     border-radius: 50px;
 }
 
+input:focus {
+    outline: 1px solid var(--main);
+}
+
 button {
     margin-top: 16px;
     width: 100%;

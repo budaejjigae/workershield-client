@@ -15,18 +15,23 @@
     border: 1px solid var(--gray500);
 }
 
+input:focus {
+    outline: 1px solid var(--main);
+}
+
 .search-icon {
     margin-top: 12px;
     margin-left: -48px;
 }
 
-.board {
-    height: 100%;
-    margin-top: 16px;
-    overflow-y: auto;
+.board-container {
+    margin-bottom: 24px;
 }
 
-.board {
+.post {
+    height: 115px;
+    margin-top: 16px;
+    overflow-y: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -76,4 +81,38 @@
     right: 16px;
     border-radius: 50%;
     background-color: var(--main);
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 64px;
+}
+
+.pagination button {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 2px;
+    border: 1px solid var(--gray500);
+    background-color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.pagination button:hover {
+    background-color: #ddd;
+}
+
+.pagination .active {
+    background-color: var(--main);
+    color: #fff;
+}
+
+.pagination .disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
 }
