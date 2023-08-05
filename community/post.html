@@ -16,12 +16,10 @@
     <div class="container">
         <div class="post-container">
             <div class="top">
-                <div class="title">글 제목</div>
-                <div class="sub"><span>작성자</span> | <span>2023.08.05</span></div>
+                <div class="title" id="title"></div>
+                <div class="sub"><span id="author"></span></div>
             </div>
-            <div class="content">
-                글 내용~~~~ 글 내용~~~~ 글 내용~~~~ 글 내용~~~~ 글 내용~~~~
-                글 내용~~~~ 글 내용~~~~ 글 내용~~~~ 글 내용~~~~ 글 내용~~~~
+            <div class="content" id="content">
             </div>
         </div>
         <div class="comment-container">
@@ -37,5 +35,7 @@
             <button><box-icon name='send' type='solid' color="white"></box-icon></button>
           </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./post.js"></script>
 </body>
 </html>

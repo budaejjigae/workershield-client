@@ -1,110 +1,51 @@
 /******* 페이징 *******/
 const postsPerPage = 10; // 한 페이지당 보여줄 게시물 수
-const posts = [
-    {
-        title: 'hi',
-        author: 'yo',
-        content: 'dasdsadasdsadasdasdasdasdsadas',
-        views: 37,
-        comments: 12
-    },
-    {
-        title: 'hi',
-        author: 'yo',
-        content: 'dasdsadasdsadasdasdasdasdsadas',
-        views: 37,
-        comments: 12
-    },
-    {
-        title: 'hi',
-        author: 'yo',
-        content: 'dasdsadasdsadasdasdasdasdsadas',
-        views: 37,
-        comments: 12
-    },
-    {
-        title: 'hi',
-        author: 'yo',
-        content: 'dasdsadasdsadasdasdasdasdsadas',
-        views: 37,
-        comments: 12
-    },
-    {
-        title: 'hi',
-        author: 'yo',
-        content: 'dasdsadasdsadasdasdasdasdsadas',
-        views: 37,
-        comments: 12
-    },
-    {
-        title: 'hi',
-        author: 'yo',
-        content: 'dasdsadasdsadasdasdasdasdsadas',
-        views: 37,
-        comments: 12
-    },
-    {
-        title: 'hi',
-        author: 'yo',
-        content: 'dasdsadasdsadasdasdasdasdsadas',
-        views: 37,
-        comments: 12
-    },
-    {
-        title: 'hi',
-        author: 'yo',
-        content: 'dasdsadasdsadasdasdasdasdsadas',
-        views: 37,
-        comments: 12
-    },
-    {
-        title: 'hi',
-        author: 'yo',
-        content: 'dasdsadasdsadasdasdasdasdsadas',
-        views: 37,
-        comments: 12
-    },
-    {
-        title: 'hi',
-        author: 'yo',
-        content: 'dasdsadasdsadasdasdasdasdsadas',
-        views: 37,
-        comments: 12
-    },
-    {
-        title: 'hi',
-        author: 'yo',
-        content: 'dasdsadasdsadasdasdasdasdsadas',
-        views: 37,
-        comments: 12
-    },
-    {
-        title: 'hi',
-        author: 'yo',
-        content: 'dasdsadasdsadasdasdasdasdsadas',
-        views: 37,
-        comments: 12
-    },
-    {
-        title: 'hi',
-        author: 'yo',
-        content: 'dasdsadasdsadasdasdasdasdsadas',
-        views: 37,
-        comments: 12
-    },
-]; // 게시물 데이터
 
-function displayPosts(pageNumber) {
+// 토큰을 로컬 스토리지에서 가져오기
+const accessToken = localStorage.getItem('accessToken');
+
+// API 요청 헤더에 토큰 추가
+const headers = {
+  Authorization: `Bearer ${accessToken}`
+};
+
+// 게시글 목록을 가져오는 함수
+async function fetchPosts(pageId) {
+    try {
+      const response = await axios.get(`http://192.168.10.192:8088/commu/page/${pageId}`, { headers });
+      const { data, totalPosts } = response.data; // 응답 데이터에서 필요한 정보 추출
+      console.log('d: ', data);
+      console.log('t:', totalPosts)
+  
+      // 필요한 정보를 가공하여 배열 형태로 반환
+      const posts = data.map(item => ({
+        author: item.boardWriter,
+        title: item.boardHead,
+        content: item.boardContent,
+        views: item.boardView,
+        comments: item.boardComment,
+        id: item.boardID
+      }));
+  
+      return { posts, totalPosts }; // 가져온 게시글 목록과 총 게시글 수 반환
+    } catch (error) {
+      console.error('Error fetching posts:', error);
+      return { posts: [], totalPosts: 0 }; // 에러가 발생하면 빈 배열과 0을 반환
+    }
+  } 
+
+  async function displayPosts(pageNumber) {
     const startIndex = (pageNumber - 1) * postsPerPage;
     const endIndex = startIndex + postsPerPage;
-    const postsToShow = posts.slice(startIndex, endIndex);
-
+    // 게시글 목록 가져오기
+    const { posts } = await fetchPosts(pageNumber); // fetchPosts 함수 수정 후 반환값 변경
+  
     const container = document.getElementById("posts-container");
     container.innerHTML = ""; // 기존 게시물 삭제
 
-    postsToShow.forEach((post) => {
+    posts.forEach((post) => {
         const postHTML = `
-            <a class="post" href="./post.html">
+            <a class="post" href="./post.html?id=${post.id}">
                 <div class="author">${post.author}</div>
                 <div class="title">${post.title}</div>
                 <div class="content">${post.content}</div>
@@ -164,12 +105,22 @@ function updatePaginationButtons(currentPage, totalPages) {
     pagination.appendChild(nextButton);
 }
 
-// 페이지 수 계산
-const totalPages = Math.ceil(posts.length / postsPerPage);
-const currentPage = 1;
-displayPosts(currentPage); // 첫 번째 페이지 게시물 표시
-updatePaginationButtons(currentPage, totalPages); // 페이징 버튼 표시
 
+// 페이지 수 계산
+async function calculateTotalPages(pageId) {
+    const totalPosts = await fetchPosts(pageId); // 전체 게시글 목록 가져오기
+    return Math.ceil(totalPosts.length / postsPerPage);
+  }  
+
+async function initializePage() {
+    const currentPage = 1;
+    const totalPages = await calculateTotalPages(currentPage); // 페이지 수 계산
+  
+    displayPosts(currentPage); // 첫 번째 페이지 게시물 표시
+    updatePaginationButtons(currentPage, totalPages); // 페이징 버튼 표시
+  }  
+  
+initializePage();
 /******* 페이징 버튼 위치 조정 *******/
 // 스크롤 여부를 감지하는 함수
 function hasVerticalScrollbar() {
