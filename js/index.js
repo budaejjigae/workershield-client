@@ -64,15 +64,16 @@ const headers = {
 };
 
 // 게시글 목록을 가져오는 함수
-async function fetchPosts() {
+async function fetchPosts(pageId) {
     try {
-        const response = await axios.get(`http://192.168.10.192:8088/commu/page/1`, { headers });
+        const response = await axios.get(`http://192.168.10.192:8088/commu/page/${pageId}`, { headers });
         const { data, totalPosts } = response.data; // 응답 데이터에서 필요한 정보 추출
         console.log('d: ', data);
-        console.log('t:', totalPosts)
+        console.log('t:', totalPosts);
     
         // 필요한 정보를 가공하여 배열 형태로 반환
         const posts = data.map(item => ({
+            id: item.boardID,
             author: item.boardWriter,
             title: item.boardHead,
             content: item.boardContent,
@@ -91,13 +92,14 @@ async function fetchPosts() {
         // 게시글 목록 가져오기
         const { posts } = await fetchPosts(pageNumber); // fetchPosts 함수 수정 후 반환값 변경
     
-        const container = document.getElementsByClassName("post-container");
+        const container = document.getElementsByClassName("posts")[0];
         container.innerHTML = ""; // 기존 게시물 삭제
 
         let i = 0; 
         posts.forEach((post) => {
             const postHTML = `
-                <a class="post" href="./post.html?id=${post.id}">
+            <div class="post-container">
+                <a class="post" href="../community/post.html?id=${post.id}">
                     <div class="post-title">
                         ${post.title}
                     </div>
@@ -105,7 +107,7 @@ async function fetchPosts() {
                         <div class="view-container">
                             <box-icon type='solid' name='show' color="#6a6a6a" size="18px"></box-icon>
                             <div class="view-data">
-                                ${post.view}
+                                ${post.views}
                             </div>
                         </div>
                         <div class="comment-container">
@@ -116,14 +118,16 @@ async function fetchPosts() {
                         </div>
                     </div>
                 </a>
+            </div>
             `;
             
             container.innerHTML += postHTML;    
-
-            if(i++ === container.length) return;
         });
 }
+async function initializePage() {
+    const currentPage = 1;
 
-displayPosts(1);
+    displayPosts(currentPage); // 첫 번째 페이지 게시물 표시
+}  
 
-
+initializePage();
