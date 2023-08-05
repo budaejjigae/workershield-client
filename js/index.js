@@ -97,7 +97,7 @@ async function fetchPosts() {
         let i = 0; 
         posts.forEach((post) => {
             const postHTML = `
-                <a class="post" href="./post.html">
+                <a class="post" href="./post.html?id=${post.id}">
                     <div class="post-title">
                         ${post.title}
                     </div>
