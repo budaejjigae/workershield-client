@@ -1,0 +1,102 @@
+header {
+    display: flex;
+    align-items: center;
+    width: 390px;
+    height: 44px;
+    padding-left: 16px;
+    box-shadow: 0 8px 9px 0px rgba(214, 214, 214, 0.25);
+}
+
+header .title {
+    font-size: 16px;
+    font-weight: 500;
+    padding-right: 16px;
+    margin: 0 auto;
+}
+
+.container {
+    margin: 16px 0;
+    overflow-y: auto;
+}
+
+.post-container .title {
+    font-size: 18px;
+    font-weight: bold;    
+}
+
+.post-container .sub {
+    margin-top: 6px;
+    font-size: 14px;
+    color: var(--gray500);
+}
+
+.post-container .top {
+    padding: 0 16px 16px 16px;
+    border-bottom: 1px solid var(--gray500);
+}
+
+.post-container .content {
+    padding: 16px;
+    min-height: 300px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--gray500);
+}
+
+.comment-container {
+    margin-top: 10px;
+}
+
+.comment-container .comment {
+    padding: 16px;
+    border-bottom: 1px solid var(--gray500);
+}
+
+.text {
+    margin-left: 16px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.comment-container .author {
+    font-size: 14px;
+    color: var(--gray500);
+}
+
+.comment-container .content {
+    margin-top: 4px;
+}
+
+.comment-container .date {
+    margin-top: 4px;
+    font-size: 15px;
+    color: var(--gray500);
+}
+
+.comment-input {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    border-top: 1px solid var(--gray500);
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.comment-input input {
+    flex: 1;
+    height: 40px;
+    padding: 0 16px;
+    margin-right: 10px;
+    outline: none;
+    font-size: 16px;
+}
+
+.comment-input button {
+    padding: 6px 12px;
+    background-color: var(--main);
+    border-radius: 8px;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
