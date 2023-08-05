@@ -1,0 +1,78 @@
+.container {
+    margin: 16px 0;
+}
+
+.search-container {
+    display: flex;
+}
+
+.search {
+    width: 358px;
+    height: 48px;
+    margin-left: 16px;
+    padding: 0 16px;
+    border-radius: 30px;
+    border: 1px solid var(--gray500);
+}
+
+.search-icon {
+    margin-top: 12px;
+    margin-left: -48px;
+}
+
+.board {
+    height: 100%;
+    margin-top: 16px;
+    overflow-y: auto;
+}
+
+.board {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-bottom: 1px solid var(--gray500);
+}
+
+.author {
+    margin-left: 16px;
+    font-size: 14px;
+    color: var(--gray500);
+}
+
+.title {
+    margin-left: 16px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.content {
+    margin: 0 16px;
+    font-size: 16px;
+}
+
+.bottom-menu {
+    display: flex;
+    margin-top: 8px;
+    margin-right: 16px;
+    margin-bottom: 10px;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.views, .comments {
+    margin-left: 4px;
+    margin-right: 16px;
+}
+
+.post-btn {
+    position: fixed;
+    width: 49px;
+    height: 49px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 65px;
+    right: 16px;
+    border-radius: 50%;
+    background-color: var(--main);
+}
